@@ -1,4 +1,5 @@
-import { defineEventHandler, setResponseHeader } from "h3"
+import type { SensorDataRaw, SensorType } from '@shared/models'
+import { defineEventHandler, setResponseHeader } from 'h3'
 
 // /**
 //  *  Actual endpoint that sends data to the client.
@@ -10,14 +11,14 @@ export default defineEventHandler(async (event) => {
   setResponseHeader(event, 'Cache-Control', 'no-cache')
   setResponseHeader(event, 'Connection', 'keep-alive')
 
-  const types = ['TEMP', 'HEARTBEAT', 'ERROR']
+  const types: SensorType[] = ['TEMP', 'HEARTBEAT', 'ERROR']
 
   const stream = new ReadableStream({
     start(controller) {
       const interval = setInterval(() => {
-        const type = types[Math.floor(Math.random() * types.length)]
+        const type: SensorType = types[Math.floor(Math.random() * types.length)]!
 
-        const data = {
+        const data: SensorDataRaw = {
           t: Date.now(), // Timestamp
           v: (Math.random() * 100).toFixed(2), // Value
           m: `Msg_${Math.random().toString(36).slice(-4)}`, // Message
@@ -31,7 +32,7 @@ export default defineEventHandler(async (event) => {
         const message = `data: ${JSON.stringify(data)}\n\n`
 
         controller.enqueue(new TextEncoder().encode(message))
-      }, 300)
+      }, 100)
 
       event.node.req.on('close', () => {
         clearInterval(interval)
