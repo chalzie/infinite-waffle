@@ -1,0 +1,30 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: ./dockerfiles/frontend/Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./vue-app:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - evopark-net
+
+  backend:
+    build:
+      context: .
+      dockerfile: ./dockerfiles/backend/Dockerfile
+    volumes:
+      - ./nitro-app:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    networks:
+      - evopark-net
+
+networks:
+  evopark-net:
+    driver: bridge
