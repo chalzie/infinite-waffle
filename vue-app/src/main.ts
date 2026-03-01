@@ -1,3 +1,4 @@
+import 'virtual:uno.css'
 import './assets/styles/main.css'
 
 import { createPinia } from 'pinia'
