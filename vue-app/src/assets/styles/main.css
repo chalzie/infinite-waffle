@@ -1,0 +1,19 @@
+@import './_theme.css';
+@import './_fonts.css';
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+  font-family: var(--font-family);
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
