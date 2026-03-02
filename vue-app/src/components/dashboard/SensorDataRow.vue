@@ -14,12 +14,6 @@ import type { SensorData } from '../../types/sensor'
 defineProps<{
   item: SensorData
 }>()
-
-// const itemColor = computed(() => props.item.type === 'ERROR' ? 'var(--color-error)' : '')
-
-// onMounted(() => {
-//   console.log('Mounted!', props.item.id)
-// })
 </script>
 
 <style scoped>
@@ -28,7 +22,6 @@ defineProps<{
   display: grid;
   grid-template-columns: 1.5fr 0.5fr 1fr 1fr 1fr;
   gap: 10px;
-  /* color: v-bind(itemColor); */
 
   will-change: transform;
   content-visibility: auto;

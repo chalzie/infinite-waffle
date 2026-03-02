@@ -8,7 +8,6 @@ const parseData = (data: string, counter: number) => {
   const parsed = JSON.parse(data) as SensorDataRaw
   const processedData: SensorData = {
     id: counter,
-    // date: new Date(parsed.t).toDateString(),
     timestamp: parsed.t,
     value: Number.parseFloat(parsed.v),
     message: parsed.m,
@@ -39,15 +38,7 @@ export function useSensor(url: string = '/api') {
   let isFull = false
 
   const loopRAF = (timestamp: number) => {
-    // Only update every 300ms, but sync it with a fresh animation frame
     if (timestamp - lastUpdate >= appStore.settings.refreshRate) {
-      // if (queue.length > 0) {
-      // const incoming = [...queue]
-      // queue.length = 0
-
-      // Atomic update
-      // sensorData.value = [...sensorData.value, ...incoming].slice(-appStore.settings.rowsCount)
-      // }
       const orderedData = isFull
         ? [...queue.slice(head), ...queue.slice(0, head)]
         : queue.slice(0, head)
@@ -74,7 +65,6 @@ export function useSensor(url: string = '/api') {
       eventSource.onmessage = (event: MessageEvent) => {
         if (appStore.settings.active) {
           const parsedData: SensorData = parseData(event.data, counter++)
-          // queue.push(parsedData)
 
           queue[head] = parsedData
           head = (head + 1) % appStore.settings.rowsCount

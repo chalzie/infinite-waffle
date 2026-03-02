@@ -34,9 +34,6 @@ const textColor = computed(() => props.isPrimary ? 'var(--color-black)' : 'var(-
       text-transform: uppercase;
       font-size: 0.8rem;
 
-      /* width: fit-content; */
-      /* font-weight: 700; */
-
       &::after {
         content: '';
         width: 100%;
