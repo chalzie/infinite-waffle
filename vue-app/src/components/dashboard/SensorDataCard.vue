@@ -4,7 +4,7 @@
       <SensorDataTools />
 
       <div class="sensor-data-card__rows flex flex-col">
-        <div v-for="(item, index) in items" :key="index">
+        <div v-for="item in items" :key="item.id">
           <SensorDataRow :item="item" />
         </div>
       </div>
