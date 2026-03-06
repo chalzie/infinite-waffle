@@ -34,6 +34,8 @@ const navigateTo = (path: string) => {
   color: var(--color-white);
 
   .logo-container {
+    min-height: 35px;
+
     :hover {
       cursor: pointer;
     }

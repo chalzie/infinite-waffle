@@ -33,6 +33,7 @@ const textColor = computed(() => props.isPrimary ? 'var(--color-black)' : 'var(-
       position: relative;
       text-transform: uppercase;
       font-size: 0.8rem;
+      height: 20px;
 
       &::after {
         content: '';
@@ -40,7 +41,7 @@ const textColor = computed(() => props.isPrimary ? 'var(--color-black)' : 'var(-
         height: 1px;
         position: absolute;
         bottom: -8px;
-        left: -8px;
+        left: 0;
 
         background-color: var(--color-gray);
       }

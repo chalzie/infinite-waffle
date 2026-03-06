@@ -18,6 +18,7 @@ defineProps<{
 
 <style scoped>
 .sensor-data-row {
+  height: 20px;
   font-size: 12px;
   display: grid;
   grid-template-columns: 1.5fr 0.5fr 1fr 1fr 1fr;
