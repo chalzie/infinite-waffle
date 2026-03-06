@@ -4,9 +4,7 @@
       <SensorDataTools />
 
       <div class="sensor-data-card__rows flex flex-col">
-        <div v-for="item in items" :key="item.id">
-          <SensorDataRow :item="item" />
-        </div>
+        <SensorDataRow v-for="item in items" :key="item.id" :item="item" />
       </div>
     </template>
   </DashboardCard>
