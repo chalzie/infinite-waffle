@@ -2,8 +2,8 @@
   <div class="app-dashboard text-white p-8 overflow-hidden flex flex-col gap-4">
     <div class="averages flex md:flex-row flex-col gap-4 w-full justify-between">
       <AverageValueCard :value="averageTemperature" title="Average temperature" unit="°C" />
-      <AverageValueCard :value="averageHeartbeat" title="Average heartbeat" unit="bpm" />
-      <AverageValueCard :value="averageError" title="Average error" unit="units" />
+      <!-- <AverageValueCard :value="averageHeartbeat" title="Average heartbeat" unit="bpm" /> -->
+      <!-- <AverageValueCard :value="averageError" title="Average error" unit="units" /> -->
     </div>
     <SensorDataCard :items="filteredSensorData" class="h-full overflow-hidden" />
   </div>
@@ -32,12 +32,12 @@ const filteredSensorData = computed(() => {
 const averageTemperature = computed(() => {
   return countAverage(sensorData.value, 'TEMP', 20)
 })
-const averageHeartbeat = computed(() => {
-  return countAverage(sensorData.value, 'HEARTBEAT', 20)
-})
-const averageError = computed(() => {
-  return countAverage(sensorData.value, 'ERROR', 20)
-})
+// const averageHeartbeat = computed(() => {
+//   return countAverage(sensorData.value, 'HEARTBEAT', 20)
+// })
+// const averageError = computed(() => {
+//   return countAverage(sensorData.value, 'ERROR', 20)
+// })
 </script>
 
 <style scoped>
@@ -53,9 +53,15 @@ const averageError = computed(() => {
       color: var(--color-black);
       font-size: 1.5rem;
       font-weight: 700;
+    }
+  }
+}
 
-      &:only-child {
-        width: min(100%, 200px);
+@media (min-width: 576px) {
+  .app-dashboard {
+    .averages > div {
+      &:nth-child(1):only-child {
+        width: 33.33%;
       }
     }
   }
