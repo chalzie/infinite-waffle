@@ -1,5 +1,5 @@
 <template>
-  <DashboardCard title="Sensor data">
+  <DashboardCard title="Sensor data" class="sensor-data-card flex flex-col justify-start">
     <template #content>
       <SensorDataTools />
 
@@ -36,8 +36,13 @@ const overflow = computed(() => {
 </script>
 
 <style scoped>
+.sensor-data-card {
+  flex: 1 0 0%;
+  min-height: 0px;
+}
 .sensor-data-card__rows {
   height: 100%;
-  overflow: v-bind(overflow);
+  overflow-y: v-bind(overflow);
+  overflow-x: hidden;
 }
 </style>

@@ -1,11 +1,11 @@
 <template>
-  <div class="app-dashboard text-white p-8 overflow-hidden flex flex-col gap-4">
+  <div class="app-dashboard text-white p-8 flex flex-col gap-4">
     <div class="averages flex md:flex-row flex-col gap-4 w-full justify-between">
       <AverageValueCard :value="averageTemperature" title="Average temperature" unit="°C" />
       <!-- <AverageValueCard :value="averageHeartbeat" title="Average heartbeat" unit="bpm" /> -->
       <!-- <AverageValueCard :value="averageError" title="Average error" unit="units" /> -->
     </div>
-    <SensorDataCard :items="filteredSensorData" class="h-full overflow-hidden" />
+    <SensorDataCard :items="filteredSensorData" />
   </div>
 </template>
 
